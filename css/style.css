@@ -1,6 +1,6 @@
 body {
-  padding: 0px;
-  margin: 0px;
+  padding: 10px;
+  margin: 10px;
   font-family: "Georgia", serif;
   overflow: hidden;
 }
@@ -25,15 +25,15 @@ body {
 #contents {
   padding: 0;
   width: 100%;
-  margin-top: 25; /*Adjust if Title header needs more space */
+  margin-top: 0; /*Adjust if Title header needs more space */
   height: 100%; /* Adjust to fit max Description length, one setting for all; alternative is 100% */
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 #top {
-  height: 40px;
-  margin: 0;
+  height: 50px;
+  margin: 10;
 }
 
 #space-at-the-bottom {
@@ -50,8 +50,8 @@ body {
   background-color: white;
   width: 100vw;
   z-index: 100;
-  margin: 10px;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
   visibility: hidden;
   font-weight: bold;
   text-align: center;
