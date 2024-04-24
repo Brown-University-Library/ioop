@@ -1,7 +1,7 @@
 body {
   padding: 0px;
   margin: 0px;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Georgia", serif;
   overflow: hidden;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 #space-at-the-bottom {
-  height: 200px;
+  height: 100px;
   margin: 0;
   text-align: center;
   padding-top: 150px;
