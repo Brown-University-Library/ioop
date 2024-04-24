@@ -1,7 +1,7 @@
 body {
   padding: 0px;
   margin: 0px;
-  font-family: "Georgia", serif;
+  font-family: "Palatino", serif;
   overflow: hidden;
 }
 
@@ -158,19 +158,19 @@ a.source:visited {
 }
 
 #header {
-  padding: 5px 0;
+  padding: 5px 5px;
   text-align: center;
   color: #333;
 }
 
 /* Storymap title & subtitle */
 h1 {
-  margin: 0;
+  margin: 5px;
   font-size: 1.5em;
 }
 
 h2 {
-  margin: 0;
+  margin: 5px;
   font-size: 1.1em;
   font-weight: normal;
 }
