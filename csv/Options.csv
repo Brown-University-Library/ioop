@@ -16,7 +16,7 @@ Media Container Height,300,"Maximum height of the image, in pixels. 200 is defau
 Pixels After Final Chapter,100,In pixels. At least 100
 Enable Lightbox for Images,yes,yes or no
 Credits,,"For help, see tutorial in HandsOnDataViz.org"
-Author Name,<a href="https://www.nativecairns.org/">Center for American Indian Research and Native Studies (CAIRNS)</a> and <a href="https://library.brown.edu/create/cds/">Brown University</a>,"Appears in map credits as ""View data by..."" (or leave blank)"
-Author Email or Website,,Create link in Author Name by inserting your email or web address (or leave blank)
+Author Name,Center for American Indian Research and Native Studies (CAIRNS) & Brown University,"Appears in map credits as ""View data by..."" (or leave blank)"
+Author Email or Website,https://www.nativecairns.org/,Create link in Author Name by inserting your email or web address (or leave blank)
 Author GitHub Repo Link,https://github.com/Brown-University-Library/in-out-of-place/,"Insert your code repo URL to appear as link in ""View code..."" (or leave blank)"
 Code Credit,"<a href=""https://handsondataviz.org"">HandsOnDataViz</a>","Appears in credits as ""...code by..."" (or leave blank)"
