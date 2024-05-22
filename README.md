@@ -1,4 +1,5 @@
 # leaflet-timeline-slider
+Project link: https://brown-university-library.github.io/in-out-of-place/
 Leaflet plugin that creates a customizable timeline slider.
 Original implementation of timeline at https://codepen.io/trevanhetzel/pen/rOVrGK.
 
