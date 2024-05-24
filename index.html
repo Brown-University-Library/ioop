@@ -52,13 +52,15 @@
       </script>
 
     <style>
-    html, body, #map { width:100%; height:100vh; margin:0; padding:0; }
+    #map { width:100%; height:100vh; margin:0; padding:0; }
     #slider{ position: absolute; top: 10px; right: 10px; }
     </style>
     
 </head>
-    <body>
-         <!--HEADER-->
+<body>
+    
+<!--HEADER-->
+<div>
     <header class="header-main">
         <div class="header-main-title">
             <h1 class="header-main-title">In and Out of Place:<br>Tracking Resources Extractions from Treaty Lands, 1874</h1>
@@ -76,7 +78,8 @@
             </div>
         </div>
     </header>
-
+</div>
+        
     <!--Base Map-->
     <div id="map"></div>
     <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">
