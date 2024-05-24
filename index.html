@@ -1,42 +1,100 @@
 <html lang = "en">
 
 <head>
-    <meta charset = "UTF-8" />
-    <title>Leaflet Timeline Slider</title>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    <meta charset="UTF-8"/>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0", user-scalable="no"/>
+    <meta name="referrer" content="origin-when-cross-origin"/>
+    <title>In and Out of Place: Tracking Resource Extractions from Treaty Lands</title>
+    
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+    
+    <!--Leaflet css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link ref="stylesheet" href="css/main.css">
 
-    <script src="src/leaflet-timeline-slider.js"></script>
+    <!--Leaflet js-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     
+    <!--add KML sources there <script scr=""></script>-->
+
+    <!--Leaflet time-slider js-->
+    <script src="leaflet-timeline-slider.min.js"></script>
+
+    <!--Basemap layer-->
+    <script>
+        var overlay;
+        function init() {
+            var mapBounds = new L.LatLngBounds(
+                new L.LatLng(-85.051129, -180),
+                new L.LatLng(85.051129, 180));
+            var mapMinZoom = 1;
+            var mapMaxZoom = 11;
+          var map = L.map('map').setView([43.8692810, -103.5264874], 6);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+          overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
+              minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+              bounds: mapBounds,
+              opacity: 0.85
+            }).addTo(map);
+        }
+      </script>
+
+    <style>
+    html, body, #map { width:100%; height:100vh; margin:0; padding:0; }
+    #slider{ position: absolute; top: 10px; right: 10px; }
+    </style>
     
 </head>
     <body>
-        <div id="mapid" style="height: 600px;">
+         <!--HEADER-->
+    <header class="header-main">
+        <div class="header-main-logo">
+            <img src="image/cairns-logo.png">
+            <h1 class="header-main-title">In and Out of Place:<br>Tracking Resources Extractions from Treaty Lands, 1874</h1>
         </div>
+        <button class="button"><a href="#credit">Credit</a></button>
+        <button class="button"><a href="#credit">About</a></button>
+        <div class="dropdown">
+            <button class="dropbtn">Expeditions
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="https://brown-university-library.github.io/in-out-of-place-custer/" target="_blank">Custer's Expedition, 1874</a>
+                <a href="#" target="_blank">Marsh's Expedition</a>
+                <a href="#" target="_blank">Black Elk's Expedition</a>
+            </div>
+        </div>
+    </header>
 
+    <!--Base Map-->
+    <div id="map"></div>
+    <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">
 
+<!--Leaflet Timeslider-->
         <script type="text/javascript">
-            data = {"type": "FeatureCollection",
+             data = {"type": "FeatureCollection",
                         "features": [
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "Day 1",
-                                    "content": "This is where some people moved to."
+                                    "title": "Long Ago",
+                                    "content": "Mato Tipila"
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        -73.7949,
-                                        40.7282,
+                                        -104.715194,
+                                        44.590344,
+                                        ,
                                         1
                                     ]
                                 }
@@ -44,14 +102,14 @@
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "The Next Day",
-                                    "content": "This is where some people grooved to."
+                                    "title": "Long Ago",
+                                    "content": "Mato Paha"
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        -74.3838,
-                                        40.9148,
+                                        -103.426578,
+                                        44.475894,
                                         1
                                     ]
                                 }
@@ -59,14 +117,14 @@
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "Amazing Event",
-                                    "content": "This is where they went to have fun."
+                                    "title": "Long Ago",
+                                    "content": "Inyan Kagha"
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        4.899431,
-                                        52.379189,
+                                        -104.350169,
+                                        44.212967,
                                         1
                                     ]
                                 }
@@ -74,14 +132,14 @@
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "1776",
-                                    "content": "This where they went when the revolution had begun."
+                                    "title": "Long Ago",
+                                    "content": "Pe Shla"
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        -71.3489484,
-                                        42.4603719,
+                                        -103.814917,
+                                        43.986978,
                                         1
                                     ]
                                 }
@@ -89,15 +147,15 @@
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "1776",
-                                    "content": "This where they went when the revolution had begun."
+                                    "title": "Long Ago",
+                                    "content": "Hinhan Kagha Paha"
                                     
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        -71.2272,
-                                        42.4473,
+                                        -103.531192,
+                                        43.865914,
                                         1
                                     ]
                                 }
@@ -105,14 +163,14 @@
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "1984",
-                                    "content": "So they all came here...and disappeared without a trace!"
+                                    "title": "Long Ago",
+                                    "content": "Washun Niya"
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        -0.118092,
-                                        51.509865,
+                                        -103.479522,
+                                        43.558192,
                                         1
                                     ]
                                 }
@@ -120,27 +178,536 @@
                             {
                                 "type": "Feature",
                                 "properties": {
-                                    "title": "12/22/63",
-                                    "content": "Now, this can be quite the scary place."
+                                    "title": "Long Ago",
+                                    "content": "Pte Taliyapa"
                                 },
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [
-                                        -70.2553259,
-                                        43.661471,
+                                        -103.345672,
+                                        43.517914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Mato Tipila"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.715194,
+                                        44.590344,
+                                        ,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Mato Paha"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.426578,
+                                        44.475894,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Inyan Kagha"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.350169,
+                                        44.212967,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Pe Shla"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.814917,
+                                        43.986978,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Hinhan Kagha Paha"
+                                    
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.531192,
+                                        43.865914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Washun Niya"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.479522,
+                                        43.558192,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Pte Taliyapa"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.345672,
+                                        43.517914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1851",
+                                    "content": "Fort Laramie"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.557564,
+                                        42.20255,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Mato Tipila"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.715194,
+                                        44.590344,
+                                        ,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Mato Paha"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.426578,
+                                        44.475894,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Inyan Kagha"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.350169,
+                                        44.212967,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Pe Shla"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.814917,
+                                        43.986978,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Hinhan Kagha Paha"
+                                    
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.531192,
+                                        43.865914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Washun Niya"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.479522,
+                                        43.558192,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Pte Taliyapa"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.345672,
+                                        43.517914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Fort Laramie"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.557564,
+                                        42.20255,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Fort C.F. Smith"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -107.908658,
+                                        45.3146,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Fort Phil Kearny"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -106.826169,
+                                        44.532053,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Fort Letterman"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -105.486172,
+                                        42.843617,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1868",
+                                    "content": "Fort Sully"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -100.598506,
+                                        44.586,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Mato Tipila"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.715194,
+                                        44.590344,
+                                        ,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Mato Paha"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.426578,
+                                        44.475894,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Inyan Kagha"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.350169,
+                                        44.212967,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Pe Shla"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.814917,
+                                        43.986978,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Hinhan Kagha Paha"
+                                    
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.531192,
+                                        43.865914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Washun Niya"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.479522,
+                                        43.558192,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Pte Taliyapa"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.345672,
+                                        43.517914,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Fort Laramie"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -104.557564,
+                                        42.20255,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Fort Phil Kearny"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -106.826169,
+                                        44.532053,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Fort Letterman"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -105.486172,
+                                        42.843617,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Fort Sully"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -100.598506,
+                                        44.586,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Camp Robinson"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.464336,
+                                        42.665053,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Red Cloud Agency"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -103.436967,
+                                        42.671575,
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "title": "1874",
+                                    "content": "Spotted Tail Agency"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -102.7343,
+                                        42.849831,
                                         1
                                     ]
                                 }
                             },
                         ]
                     }
-
-            
-            var mymap = L.map('mapid')
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(mymap);
             
             getDataAddMarkers = function( {label, value, map, exclamation} ) {
                 map.eachLayer(function (layer) {
@@ -168,9 +735,9 @@
             };
 
             L.control.timelineSlider({
-                timelineItems: ["Day 1", "The Next Day", "Amazing Event", "1776", "12/22/63", "1984"], 
+                timelineItems: ["Long Ago", "1851", "1868", "1874", "1877", "1889", "Today"], 
                 changeMap: getDataAddMarkers,
-                extraChangeMapParams: {exclamation: "Hello World!"} })
+                extraChangeMapParams: {exclamation: "Site:"} })
             .addTo(mymap);             
         </script>
     </body>
