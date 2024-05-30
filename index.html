@@ -1,60 +1,48 @@
+<!DOCTYPE html>
 <html lang = "en">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewpoint" content="width=device-width, initial-scale=1.0", user-scalable="no"/>
-    <meta name="referrer" content="origin-when-cross-origin"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
     <title>In and Out of Place: Tracking Resource Extractions from Treaty Lands</title>
     
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    
-    <!--Leaflet css -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+<!-- CSS -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
+      
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet-src.js"></script>
-
-    <!--Leaflet js-->
+<!--Leaflet js-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-     
-    <!--add KML sources there <script scr=""></script>-->
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
 
-    <!--Leaflet time-slider js-->
-    <script src="leaflet-timeline-slider.min.js"></script>
-
-<!--Basemap layer-->
-    <script type="text/javascript>
-        var overlay;
-        function init() {
-            var mapBounds = new L.LatLngBounds(
-                new L.LatLng(-85.051129, -180),
-                new L.LatLng(85.051129, 180));
-            var mapMinZoom = 1;
-            var mapMaxZoom = 11;
+    <!--Basemap-->    
+        <script>
+          var overlay;
+          function init() {
+              var mapBounds = new L.LatLngBounds(
+                  new L.LatLng(-85.051129, -180),
+                  new L.LatLng(85.051129, 180));
+              var mapMinZoom = 1;
+              var mapMaxZoom = 11;
             var map = L.map('map').setView([43.8692810, -103.5264874], 6);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
             overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
                 minZoom: mapMinZoom, maxZoom: mapMaxZoom,
                 bounds: mapBounds,
                 opacity: 0.85
-            }).addTo(map);
-        }
-    </script>
+              }).addTo(map);
+          }
+        </script>
 </head>
-
+    
 <body onload="init()">
 
-    <!--HEADER-->
+    <!-- HEADER -->
         <div class="header-main">
             <div class="header-main-title">
                 <h1 class="header-main-title">In and Out of Place:<br>Tracking Resources Extractions from Treaty Lands, 1874</h1>
@@ -73,11 +61,9 @@
             </div>
         </div>
         
-    <!--Map + Slider-->    
+    <!-- Map + Slider -->    
         <div id="map">
         <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">    
-        
-        </div>
-       
-    </body>
+            
+</body>
 </html>
