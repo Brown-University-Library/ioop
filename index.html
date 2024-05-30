@@ -31,7 +31,25 @@
 
     <!--Leaflet time-slider js-->
     <script src="leaflet-timeline-slider.min.js"></script>
-    
+
+<!--Basemap layer-->
+    <script>
+        var overlay;
+        function init() {
+            var mapBounds = new L.LatLngBounds(
+                new L.LatLng(-85.051129, -180),
+                new L.LatLng(85.051129, 180));
+            var mapMinZoom = 1;
+            var mapMaxZoom = 11;
+            var map = L.map('map').setView([43.8692810, -103.5264874], 6);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
+                minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+                bounds: mapBounds,
+                opacity: 0.85
+            }).addTo(map);
+        }
+    </script>
 </head>
 <body>
     
@@ -56,27 +74,12 @@
     </header>
 </div>
         
-    <!--Base Map-->
+<!--Base Map-->
     <div id="map"></div>
     <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">
 
 <!--Basemap layer-->
 <script type="text/javascript">
-        var overlay;
-        function init() {
-            var mapBounds = new L.LatLngBounds(
-                new L.LatLng(-85.051129, -180),
-                new L.LatLng(85.051129, 180));
-            var mapMinZoom = 1;
-            var mapMaxZoom = 11;
-            var map = L.map('map').setView([43.8692810, -103.5264874], 6);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-            overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
-                minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-                bounds: mapBounds,
-                opacity: 0.85
-            }).addTo(map);
-        }
     
 <!--Leaflet Timeslider-->
              data = {"type": "FeatureCollection",
