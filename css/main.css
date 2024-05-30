@@ -23,6 +23,7 @@ body {margin: 0;
   float: left;
   font-size: 20px;
   color: black;
+  padding: 15px;
 }
 
 .dropdown {
@@ -36,7 +37,7 @@ body {margin: 0;
   outline: none;
   color: black;
   padding: 14px 16px;
-  background-color: inherit;
+  background-color: #c5f4d9;
   font-family: inherit;
   margin: 0;
   display: inline;
@@ -74,6 +75,7 @@ body {margin: 0;
 
 .button {
   background-color: #c5f4d9; /* Green */
+  float: right;
   border: none;
   color: white;
   padding: 0;
