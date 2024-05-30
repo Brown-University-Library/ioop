@@ -1,7 +1,3 @@
-body {
-  padding: 100px;
-}
-
 @mixin rangeThumb {
   width: 18px;
   height: 18px;
