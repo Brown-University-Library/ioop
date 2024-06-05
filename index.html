@@ -14,34 +14,22 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/slider.css">
       
-
-    <!--Leaflet js-->
+    <!--Leaflet + jQuery js-->
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!--Basemap-->    
-        <script>
-          var overlay;
-          function init() {
-              var mapBounds = new L.LatLngBounds(
-                  new L.LatLng(-85.051129, -180),
-                  new L.LatLng(85.051129, 180));
-              var mapMinZoom = 1;
-              var mapMaxZoom = 11;
-            var map = L.map('map').setView([43.8692810, -103.5264874], 6);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-            overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
-                minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-                bounds: mapBounds,
-                opacity: 0.85
-              }).addTo(map);
-          }
-        </script>
 
+    <!--Time Slider-->
+        <script src="dist/leaflet-timeline-slider.min.js"></script>
+        <script src="src/leaflet-timeline-slider.js"></script>
+        <script src="src/timeslider.js"></script>
+      
 </head>
-      <body onload="init()">
+<body onload="init()">
 
     <!--HEADER-->
         <div class="header-main">
@@ -60,11 +48,64 @@
                     <a href="#" target="_blank">Black Elk's Expedition</a>
                 </div>
             </div>
-        </div>
+        </div> 
         
-    <!--Map + Slider-->    
-        <div id="map"></div>
-        <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">    
+    <!--Basemap and slider-->    
+    <div id="map">
+            <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">  
+    </div>
+    
+    <!--Time Slider-->   
+    <div class="range">
+        <input type="range" min="0" max="6" step="1" value="1">
+    </div>
+    
+    <ul class="range-labels">
+        <li>Long Ago</li>
+        <li>1851</li>
+        <li>1868</li>
+        <li>1874</li>
+        <li>1877</li>
+        <li>1889</li>
+        <li>Today</li>
+    </ul>
+
+    <!--Adding map and overlay-->
+    <script type="text/javascript">
+        var overlay;
+        function init() {
+            var mapBounds = new L.LatLngBounds(
+                new L.LatLng(-85.051129, -180),
+                new L.LatLng(85.051129, 180));
+            var mapMinZoom = 1;
+            var mapMaxZoom = 11;
+        var map = L.map('map', {minZoom: 1, maxZoom: 11}).setView([43.8692810, -103.5264874], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
+            minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+            bounds: mapBounds,
+            opacity: 0.9
+            }).addTo(map);
+        }
+    
+        var sacred = 'geojson/sacred-sites.geojson';
         
+        fetch (sacred)
+            .then(res => res.json())
+            .then(data => {
+                L.geoJSON(data).addTo(map);
+            })
+            .catch(function(error) {
+                console.log(`This is the error: ${error}`)
+            });
+
+     
+    //need js code to connect geojson data with timeslider//
+
+        L.control.timeslider({
+                timelineItems: ["Long Ago", "1851", "1868", "1874", "1877", "1889", "Today"],
+                changeMap: changeMapFunction }).addTo(mymap);
+
+    </script>     
 </body>
 </html>
