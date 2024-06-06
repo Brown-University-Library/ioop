@@ -89,7 +89,7 @@
         
         var sites = "geojson/sites.geojson";
         
-        fetch(sacred)
+        fetch(sites)
             .then((res) => res.json())
             .then((data) => {
               console.log("ETST", L.geoJSON(data));
