@@ -84,7 +84,7 @@
         overlay = L.tileLayer('https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', {
             minZoom: mapMinZoom, maxZoom: mapMaxZoom,
             bounds: mapBounds,
-            opacity: 0.9
+            opacity: 0.95
             }).addTo(map);
         }
     
@@ -93,6 +93,7 @@
         fetch (sacred)
             .then(res => res.json())
             .then(data => {
+                console.log("ETST", L.geoJSON(data));
                 L.geoJSON(data).addTo(map);
             })
             .catch(function(error) {
@@ -103,7 +104,7 @@
     //need js code to connect geojson data with timeslider//
 
         L.control.timeslider({
-                timelineItems: ["Long Ago", "1851", "1868", "1874", "1877", "1889", "Today"],
+                timelineItems: ["Long Ago", "1851", "1868", "1874", "1877", "1889", "Today",],
                 changeMap: changeMapFunction }).addTo(mymap);
 
     </script>     
