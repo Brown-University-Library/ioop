@@ -57,7 +57,7 @@
     
     <!--Time Slider-->   
     <div class="range">
-        <input type="range" min="0" max="6" step="1" value="1">
+        <input type="range" min="0" max="6" step="1" value="0">
     </div>
     
     <ul class="range-labels">
@@ -100,18 +100,12 @@
             });
 
         var expo = "geojson/expo.geojson";
-        var expoStyle = {
-            "color": #FF8300,
-            "weight": 3,
-            };
         
         fetch(expo)
             .then((res) => res.json())
             .then((data) => {
               console.log("ETST", L.geoJSON(data));
-              L.geoJSON(data, {
-                  style: expoStyle
-              }).addTo(map);
+              L.geoJSON(data).addTo(map);
             })
             .catch(function (error) {
               console.log(`This is the error: ${error}`);
