@@ -5,7 +5,7 @@
   border-radius: 50%;
   background: #37adbf;
   cursor: pointer;
-  border: 0;
+  border: 0 !important;
 }
 
 @mixin rangeTrack {
@@ -28,9 +28,8 @@
   height: 0;
   -webkit-appearance: none;
 
-  // Thumb
   &::-webkit-slider-thumb {
-    -webkit-appearance: none; // needed again for Chrome & Safari
+    -webkit-appearance: none;
     @include rangeThumb;
   }
 
@@ -42,7 +41,6 @@
     @include rangeThumb;
   }
 
-  // Track
   &::-webkit-slider-runnable-track {
     @include rangeTrack;
   }
@@ -55,12 +53,12 @@
     @include rangeTrack;
   }
 
-  &:focus { // override outline/background on focus
+  &:focus { 
     background: none;
     outline: none;
   }
 
-  &::-ms-track { // A little somethin' somethin' for IE
+  &::-ms-track { 
     width: 100%;
     cursor: pointer;
     background: transparent;
@@ -69,7 +67,6 @@
   }
 }
 
-// Labels below slider
 .range-labels {
   margin: 18px -41px 0;
   padding: 0;
