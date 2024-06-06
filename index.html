@@ -87,16 +87,16 @@
             opacity: 0.95
             }).addTo(map);
         
-        var sites = 'geojson/sites.geojson';
+        var sites = "geojson/sites.geojson";
         
-        fetch (sites)
-            .then(res => res.json())
-            .then(data => {
-                console.log("ETST", L.geoJSON(data));
-                L.geoJSON(data).addTo(map);
+        fetch(sacred)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("ETST", L.geoJSON(data));
+              L.geoJSON(data).addTo(map);
             })
-            .catch(function(error) {
-                console.log(`This is the error: ${error}`)
+            .catch(function (error) {
+              console.log(`This is the error: ${error}`);
             });
 
     //need js code to connect geojson data with timeslider//
