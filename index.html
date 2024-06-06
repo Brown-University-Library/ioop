@@ -86,8 +86,7 @@
             bounds: mapBounds,
             opacity: 0.95
             }).addTo(map);
-        }
-    
+        
         var sacred = 'geojson/sacred-sites.geojson';
         
         fetch (sacred)
@@ -100,13 +99,12 @@
                 console.log(`This is the error: ${error}`)
             });
 
-     
     //need js code to connect geojson data with timeslider//
 
         L.control.timeslider({
                 timelineItems: ["Long Ago", "1851", "1868", "1874", "1877", "1889", "Today",],
                 changeMap: changeMapFunction }).addTo(mymap);
-
+        }    
     </script>     
 </body>
 </html>
