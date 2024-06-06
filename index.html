@@ -87,13 +87,20 @@
             opacity: 0.95
             }).addTo(map);
         
-        var sacred = 'geojson/sacred-sites.geojson';
+        var sites = 'geojson/sites.geojson';
         
-        fetch (sacred)
+        fetch (sites)
             .then(res => res.json())
             .then(data => {
                 console.log("ETST", L.geoJSON(data));
-                L.geoJSON(data).addTo(map);
+                L.geoJSON(data, {
+                    style: function(feature) {
+                        switch (feature.property.site) {
+                            case 'sacred': return {color: #13bf5c};
+                            case 'historic': return {color: #1381bf};
+                            case 'route': return {color: #e49e01};
+                        }
+                    }).addTo(map);
             })
             .catch(function(error) {
                 console.log(`This is the error: ${error}`)
