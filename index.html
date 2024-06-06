@@ -99,6 +99,24 @@
               console.log(`This is the error: ${error}`);
             });
 
+        var expo = "geojson/expo.geojson";
+        var expoStyle = {
+            "color": #FF8300,
+            "weight": 3,
+            };
+        
+        fetch(expo)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("ETST", L.geoJSON(data));
+              L.geoJSON(data, {
+                  style: expoStyle
+              }).addTo(map);
+            })
+            .catch(function (error) {
+              console.log(`This is the error: ${error}`);
+            });
+
     //need js code to connect geojson data with timeslider//
 
         L.control.timeslider({
