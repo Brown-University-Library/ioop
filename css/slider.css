@@ -5,7 +5,7 @@
   border-radius: 50%;
   background: #37adbf;
   cursor: pointer;
-  border: 0 !important;
+  border: 0;
 }
 
 @mixin rangeTrack {
@@ -71,6 +71,7 @@
   margin: 18px -41px 0;
   padding: 0;
   list-style: none;
+  color: #454545;
   
   li {
     position: relative;
