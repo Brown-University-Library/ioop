@@ -13,7 +13,7 @@ body {margin: 0px 10px;
 .header-main a {
   float: right;
   font-size: 20px;
-  color: black;
+  color: #454545;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -35,7 +35,7 @@ body {margin: 0px 10px;
   font-size: 20px;  
   border: none;
   outline: none;
-  color: black;
+  color: #454545;
   padding: 14px 16px;
   background-color: #c5f4d9;
   font-family: inherit;
