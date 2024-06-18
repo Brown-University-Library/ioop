@@ -399,8 +399,8 @@ $(window).on('load', function() {
         <a href='#top'>  \
           <i class='fa fa-chevron-up'></i></br> \
           <small>Top</small></br>  \
-          <a href="https://brown-university-library.github.io/in-out-of-place/" target="_blank">Return to Homepage</a> \  
-        </a> \                
+        </a> \
+        <a href="https://brown-university-library.github.io/in-out-of-place/" target="_blank">Return to Homepage</a> \  
       </div> \
     ");
 
