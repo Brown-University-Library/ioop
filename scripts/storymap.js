@@ -400,6 +400,7 @@ $(window).on('load', function() {
           <i class='fa fa-chevron-up'></i></br> \
           <small>Top</small>  \
         </a> \
+        <a href="https://brown-university-library.github.io/in-out-of-place/" target="_blank">Return to Homepage</a> \                  
       </div> \
     ");
 
