@@ -399,7 +399,11 @@ $(window).on('load', function() {
         <a href='#top'>  \
           <i class='fa fa-chevron-up'></i></br> \
           <small>Top</small>  \
-        </a> \  
+        </a> \
+        <br/> \
+        <a href='https://brown-university-library.github.io/in-out-of-place/'>  \
+          <small>In and Out of Place</small>  \
+        </a> \
       </div> \
     ");
 
