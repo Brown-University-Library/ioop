@@ -403,7 +403,7 @@ $(window).on('load', function() {
         </br> \
         <br/> \
         <a href='https://www.nativecairns.org/index.html'>  \
-          Center for American Indian Research and Native Studies  \
+          CAIRNs  \
         </a> \
       </div> \
     ");
