@@ -43,3 +43,15 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.figure {
+  float: left; 
+  padding:20px;
+  max-width: 50%;
+}
+
+.figcaption {
+  font-style: italic;
+  font-size: .8em;
+  text-align: center;
+}
