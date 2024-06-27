@@ -9,7 +9,7 @@ body {
   left: 0;
   top: 0px;
   padding: 0px;
-  width: 100%;
+  width: 70%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
@@ -23,7 +23,7 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 750px;
+  /*max-width: 750px;*/
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
