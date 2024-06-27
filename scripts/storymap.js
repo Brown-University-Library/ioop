@@ -400,9 +400,10 @@ $(window).on('load', function() {
           <i class='fa fa-chevron-up'></i></br> \
           Top  \
         </a> \
+        </br> \
         <br/> \
-        <a href='https://brown-university-library.github.io/in-out-of-place/'>  \
-          In and Out of Place  \
+        <a href='https://www.nativecairns.org/index.html'>  \
+          Center for American Indian Research and Native Studies  \
         </a> \
       </div> \
     ");
