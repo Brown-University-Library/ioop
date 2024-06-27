@@ -1,5 +1,5 @@
 # Leaflet Storymaps for In and Out of Place project
-This Leaflet StoryMap is created for the *In and Out of Place: Tracking Resources Extractions from Treaty Lands, 1874*, a digital project done in collaboratin between Center for American Indian Research and Native Studies* (CAIRNS) and Brown University Library's Center for Digital Scholarship. This StoryMap uses a template by *Hands-On Data Visualization* (see Credits) and customized with our data and content on the 1874 expedition through the Black Hills.
+This Leaflet StoryMap is created for the *In and Out of Place: Tracking Resources Extractions from Treaty Lands, 1874*, a digital project done in collaboration between [Center for American Indian Research and Native Studies](https://www.nativecairns.org/index.html) (CAIRNS) and [Brown University Library's Center for Digital Scholarship](https://library.brown.edu/create/cds/in-and-out-of-place-resource-extractions-from-treaty-lands). This StoryMap uses a template by *Hands-On Data Visualization* (see Credits), customized with our data and content on the 1874 expedition through the Black Hills. Our data sheet can be accessed below.
 
 ## Live links
 - Leaflet Map https://brown-university-library.github.io/in-out-of-place-custer/
