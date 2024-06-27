@@ -4,7 +4,7 @@ body {
 
 .popup {
   display: none; /* Hidden by default */
-  position: fixed;
+  position: absolute;
   z-index: 1000;
   left: 0;
   top: 0px;
@@ -21,8 +21,10 @@ body {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 70%;
   max-width: 80%px;
+  max-height: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
