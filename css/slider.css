@@ -1,16 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.65);
+  padding: 30px 80px 30px 80px;
+  margin: 40px;
+}
+
 .range {
-  position: relative;
-  width: 550px;
+  position: absolute;
+  width: 545px;
   height: 5px;
 }
 
 .range input {
   width: 100%;
   position: absolute;
-  top: 2px;
+  top: 1px;
   height: 0;
   -webkit-appearance: none;
 }
+
 .range input::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px;
@@ -19,8 +33,9 @@
   border-radius: 50%;
   background: #37adbf;
   cursor: pointer;
-  border: 0;
+  border: 0 !important;
 }
+
 .range input::-moz-range-thumb {
   width: 18px;
   height: 18px;
@@ -28,8 +43,9 @@
   border-radius: 50%;
   background: #37adbf;
   cursor: pointer;
-  border: 0;
+  border: 0 !important;
 }
+
 .range input::-ms-thumb {
   width: 18px;
   height: 18px;
@@ -37,30 +53,35 @@
   border-radius: 50%;
   background: #37adbf;
   cursor: pointer;
-  border: 0;
+  border: 0 !important;
 }
+
 .range input::-webkit-slider-runnable-track {
   width: 100%;
   height: 2px;
   cursor: pointer;
   background: #b2b2b2;
 }
+
 .range input::-moz-range-track {
   width: 100%;
   height: 2px;
   cursor: pointer;
   background: #b2b2b2;
 }
+
 .range input::-ms-track {
   width: 100%;
   height: 2px;
   cursor: pointer;
   background: #b2b2b2;
 }
+
 .range input:focus {
   background: none;
   outline: none;
 }
+
 .range input::-ms-track {
   width: 100%;
   cursor: pointer;
@@ -70,23 +91,24 @@
 }
 
 .range-labels {
-  margin: 18px -41px 0;
+  margin: 18px -40px 0;
   padding: 0;
   list-style: none;
-  color: #454545;
 }
+
 .range-labels li {
   position: relative;
   float: left;
   width: 90.25px;
   text-align: center;
-  color: #454545;
-  font-size: 14px;
+  color: #b2b2b2;
+  font-size: 16px;
   cursor: pointer;
 }
+
 .range-labels li::before {
   position: absolute;
-  top: -25px;
+  top: -20px;
   right: 0;
   left: 0;
   content: "";
@@ -96,12 +118,16 @@
   background: #b2b2b2;
   border-radius: 50%;
 }
+
 .range-labels .active {
   color: #37adbf;
+  font-weight: bold;
 }
+
 .range-labels .selected::before {
   background: #37adbf;
 }
+
 .range-labels .active.selected::before {
   display: none;
 }
