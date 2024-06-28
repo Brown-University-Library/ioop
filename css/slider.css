@@ -6,7 +6,7 @@
   bottom: 40px;
   left: 20px;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 30px 80px 30px 80px;
   margin: 40px;
 }
@@ -101,7 +101,7 @@
   float: left;
   width: 90.25px;
   text-align: center;
-  color: #b2b2b2;
+  color: #636363;
   font-size: 16px;
   cursor: pointer;
 }
@@ -115,7 +115,7 @@
   margin: 0 auto;
   width: 9px;
   height: 9px;
-  background: #b2b2b2;
+  background: #636363;
   border-radius: 50%;
 }
 
