@@ -106,7 +106,7 @@
           }
 
         // Filter data points based on the selected time
-        fetch('https://cdn.glitch.global/5c0134e9-0707-438a-a612-7055618f79a8/sites.geojson?v=1719595613922')
+        fetch('geojson/sites.geojson')
             .then((res) => res.json())
             .then((data) => {
               console.log("Data fetched:", data);
