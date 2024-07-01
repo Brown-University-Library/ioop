@@ -1,4 +1,4 @@
-body {margin: 0px 10px;
+body {margin: 10px 30px;
   background-color: #ffffff;
   font-family: Georgia, serif;
 }
@@ -21,8 +21,11 @@ body {margin: 0px 10px;
 
 .header-main-title{
   float: left;
-  font-size: 25px;
+  font-size: 30px;
+  top: 50%;
   color: #100a00;
+  -ms-transform: translateY(-50%);
+  transform: translateY(5%);
 }
 
 .dropdown {
