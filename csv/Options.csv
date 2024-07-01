@@ -13,10 +13,10 @@ Narrative Text Color,,
 Narrative Link Color,,
 Active Chapter Background Color,,
 Media Container Height,300,"Maximum height of the image, in pixels. 200 is default. The image will be fit into the container with its proportions kept (it won't be skewed)."
-Pixels After Final Chapter,400,In pixels. At least 100
+Pixels After Final Chapter,500,In pixels. At least 100
 Enable Lightbox for Images,yes,yes or no
 Credits,,"For help, see tutorial in HandsOnDataViz.org"
 Author Name,American Indian Research and Native Studies (CAIRNS) and Brown University,"Appears in map credits as ""View data by..."" (or leave blank)"
-Author Email or Website,https://www.nativecairns.org/,Create link in Author Name by inserting your email or web address (or leave blank)
+Author Email or Website,,Create link in Author Name by inserting your email or web address (or leave blank)
 Author GitHub Repo Link,https://github.com/Brown-University-Library/in-out-of-place-custer/,"Insert your code repo URL to appear as link in ""View code..."" (or leave blank)"
 Code Credit,"<a href=""https://handsondataviz.org"">HandsOnDataViz</a>","Appears in credits as ""...code by..."" (or leave blank)"
