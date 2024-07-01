@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Change background gradient
         for (var i = 0; i < prefs.length; i++) {
             style += '.range {background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #fff ' + val + '%, #fff 100%)}';
-            style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
+            style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #636262 ' + val + '%, #636262 100%)}';
         }
 
         return style;
@@ -47,4 +47,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the style
     sheet.textContent = getTrackStyle($rangeInput);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var timeSlider = document.querySelector('.range input');
+    timeSlider.addEventListener('input', function() {
+        var selectedTime = parseInt(this.value, 10);
+        console.log("Selected time:", selectedTime);
+        filterDataPoints(selectedTime);
+    });
 });
