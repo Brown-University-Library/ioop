@@ -400,11 +400,6 @@ $(window).on('load', function() {
           <i class='fa fa-chevron-up'></i></br> \
           Top  \
         </a> \
-        </br> \
-        <br/> \
-        <a href='https://www.nativecairns.org/index.html'>  \
-          CAIRNs  \
-        </a> \
       </div> \
     ");
 
