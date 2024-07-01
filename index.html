@@ -120,7 +120,10 @@
       }
 
       // Filter data points based on the selected time
-      fetch('geojson/sites.geojson')
+
+     var sites = "geojson/sites.geojson";
+             
+      fetch(sites)
         .then((res) => res.json())
         .then((data) => {
           console.log("Data fetched:", data);
