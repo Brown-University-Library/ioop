@@ -31,8 +31,8 @@ body {
 
 .close-btn {
   border: none;
-  background-color: green;
-  color: white;
+  background-color: #51b869;
+  color: #ffffff;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -45,8 +45,8 @@ body {
 
 .close-btn:hover,
 .close-btn:focus {
-  color: white;
-  background-color: gray;
+  color: #ffffff;
+  background-color: #afafaf;
   text-decoration: none;
   cursor: pointer;
 }
