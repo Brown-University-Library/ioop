@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         popup.style.display = "flex";
     }
 
-    // When the user clicks on <span> (x), close the popup
+    // When the user clicks on closebutton, close the popup
     closeBtn.onclick = function() {
         popup.style.display = "none";
     }
