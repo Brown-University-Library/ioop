@@ -77,56 +77,55 @@
 
         <!--Adding map and overlay-->
         <script type="text/javascript">
-            var map, overlay, geoJSONdata;
-            const DATASET = 
-                "geojson/sites.geojson";
-            var data;
-        
+            let map, overlay, geoJSONdata;
+            const DATA_URL =
+                'geojson/sites.geojson';
+            let data;
+            
             async function init() {
-                
-                // Load geoJSON data
-                data = await fetch(DATASET).then(res) => res.json());
-                console.log("Data fetched:", data);
+        
+            // Load geoJSON data
+        
+            data = await fetch(DATA_URL).then((res) => res.json());
+            console.log("Data fetched:", data);
 
-                // Set map bounds, zoom
-                var mapBounds = new L.LatLngBounds(
-                    new L.LatLng(-85.051129, -180),
-                    new L.LatLng(85.051129, 180));
-                var mapMinZoom = 1;
-                var mapMaxZoom = 11;
-                map = L.map('map', {minZoom: 1, maxZoom: 11}).setView(
-                    [43.8692810, -103.5264874], 
-                    6
-                );
-            
-                // Add layers to map
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(
-                    map
-                );
-                overlay = L.tileLayer(
-                    'https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png', 
-                    {
-                        minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-                        bounds: mapBounds,
-                        opacity: 0.95,
-                    }
-                ).addTo(map);
+            // Set map bounds, zoom
+        
+            var mapBounds = new L.LatLngBounds(
+              new L.LatLng(-85.051129, -180),
+              new L.LatLng(85.051129, 180)
+            );
+            var mapMinZoom = 1;
+            var mapMaxZoom = 11;
+            map = L.map("map", { minZoom: 1, maxZoom: 11 }).setView(
+              [43.869281, -103.5264874],
+              6
+            );
+        
+            // Add layers to map
+        
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+              map
+            );
+            overlay = L.tileLayer(
+              "https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png",
+              {
+                minZoom: mapMinZoom,
+                maxZoom: mapMaxZoom,
+                bounds: mapBounds,
+                opacity: 1,
+              }
+            ).addTo(map);
 
-                filterDataPoints(0); // Initialize with the first time range
+            filterDataPoints(0); // Initialize with the first time range
+          }
+
+          function filterDataPoints(selectedTime) {
+            console.log("Filtering data points for selected time:", selectedTime);
+            // Remove existing data points from the map
+            if (typeof window.dataLayer !== "undefined") {
+              map.removeLayer(window.dataLayer);
             }
-            
-        // Add the time slider to the map
-        //L.control.timeslider({
-          //  timelineItems: ["Long Ago", "1851", "1868", "1874", "1877", "1889", "Today"],
-         //   changeMap: filterDataPoints,
-         // }).addTo(map);
-          
-            function filterDataPoints(selectedTime) {
-                console.log("Filtering data points for selected time:", selectedTime);
-                // Remove existing data points from the map
-                if (typeof window.dataLayer !== "undefined") {
-                  map.removeLayer(window.dataLayer);
-                }
 
             var filteredData = data.features.filter(function (feature) {
               var startTime = parseInt(feature.properties.startTime, 10);
