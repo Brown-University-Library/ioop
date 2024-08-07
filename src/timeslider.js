@@ -1,3 +1,28 @@
+// Get all DOM elements that have a timestamp
+
+function getTimestampedHtmlElements() {
+  return Array.from(document.getElementsByClassName("timed")).map((elem) => {
+    elem.ioop = {
+      startTime: parseInt(elem.dataset.startTime) || undefined,
+      endTime: parseInt(elem.dataset.endTime) || undefined,
+    };
+    return elem;
+  });
+}
+
+function updateTimestampedHtmlElements(time, timedElements) {
+  const isWithinTime = (elem) => {
+    const afterStart = !elem.ioop.startTime || time >= elem.ioop.startTime,
+      beforeEnd = !elem.ioop.endTime || time <= elem.ioop.endTime;
+
+    return afterStart && beforeEnd;
+  };
+
+  timedElements.forEach((elem) => {
+    elem.hidden = !isWithinTime(elem);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   var sheet = document.createElement("style");
   document.body.appendChild(sheet);
@@ -63,9 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   var timeSlider = document.querySelector(".range input");
+  const timedElements = getTimestampedHtmlElements();
+  console.log("TE", timedElements);
   timeSlider.addEventListener("input", function () {
     var selectedTime = parseInt(this.value, 10);
     console.log("Selected time:", selectedTime);
+    updateTimestampedHtmlElements(selectedTime, timedElements);
     filterDataPoints(selectedTime);
   });
 });
