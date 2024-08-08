@@ -5,23 +5,30 @@
     <head>
         <meta charset = "UTF-8" />
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-        <title>In and Out of Place: Tracking Resource Extractions from Treaty Lands</title>
+        <title>
+            In and Out of Place: Tracking Resource Extractions from Treaty Lands
+        </title>
 
     <!--Leaflet CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        <link 
+            rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin=""/>
+        crossorigin=""
+            />
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/slider.css">
+        <link 
+            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            />
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/slider.css"/>
       
     <!--Leaflet + jQuery js-->
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
+        <script 
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin="">
+        </script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 
     <!--Time Slider-->
         <script src="src/timeslider.js"></script>
@@ -81,75 +88,99 @@
 
         <!--Adding map and overlay-->
         <script type="text/javascript">
-            let map, overlay, geoJSONdata;
-            const DATA_URL =
-                'geojson/sites.geojson';
-            let data;
-            
-            async function init() {
-        
-            // Load geoJSON data
-        
-            data = await fetch(DATA_URL).then((res) => res.json());
-            console.log("Data fetched:", data);
+      
+      let map, overlay, geoJSONdata;
+      
+      const DATASETS = [
+        "geojson/sites.geojson",
+        "geojson/1851FLTLand.geojson",
+        "geojson/1868FLTHuntingLand.geojson",
+        "geojson/1868FLTReservationLand.geojson",
+        "geojson/1868FLTUncededLand.geojson",
+        "geojson/1877ActLand.geojson",
+        "geojson/1889AgreementLand.geojson",
+        "geojson/2024ReservationLand.geojson"
+      ];
+      let data = [];
 
-            // Set map bounds, zoom
-        
-            var mapBounds = new L.LatLngBounds(
-              new L.LatLng(-85.051129, -180),
-              new L.LatLng(85.051129, 180)
-            );
-            var mapMinZoom = 1;
-            var mapMaxZoom = 11;
-            map = L.map("map", { minZoom: 1, maxZoom: 11 }).setView(
-              [43.869281, -103.5264874],
-              6
-            );
-        
-            // Add layers to map
-        
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-              map
-            );
-            overlay = L.tileLayer(
-              "https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png",
-              {
-                minZoom: mapMinZoom,
-                maxZoom: mapMaxZoom,
-                bounds: mapBounds,
-                opacity: 1,
-              }
-            ).addTo(map);
-
-            filterDataPoints(0); // Initialize with the first time range
-          }
-
-          function filterDataPoints(selectedTime) {
-            console.log("Filtering data points for selected time:", selectedTime);
-            // Remove existing data points from the map
-            if (typeof window.dataLayer !== "undefined") {
-              map.removeLayer(window.dataLayer);
+      async function init() {
+        try {
+          // Load geoJSON data from multiple local files
+          for (const DATA_PATH of DATASETS) {
+            console.log(`Fetching data from: ${DATA_PATH}`);
+            const response = await fetch(DATA_PATH);
+            if (!response.ok) {
+              throw new Error(`Failed to fetch ${DATA_PATH}: ${response.statusText}`);
             }
-
-            var filteredData = data.features.filter(function (feature) {
-              var startTime = parseInt(feature.properties.startTime, 10);
-              var endTime = parseInt(feature.properties.endTime, 10);
-              console.log(
-                "Feature:",
-                feature.properties,
-                "Start Time:",
-                startTime,
-                "End Time:",
-                endTime
-              );
-              return selectedTime >= startTime && selectedTime <= endTime;
-            });
-
-            console.log("Filtered data:", filteredData);
-
-            // Add filtered data points to the map
-            window.dataLayer = L.geoJSON(filteredData).addTo(map);
+            const fileData = await response.json();
+            data.push(fileData);
           }
-        </script>     
-    </body>
+          console.log("Data fetched:", data);
+
+          // Set map bounds, zoom
+          var mapBounds = new L.LatLngBounds(
+            new L.LatLng(-85.051129, -180),
+            new L.LatLng(85.051129, 180)
+          );
+          var mapMinZoom = 1;
+          var mapMaxZoom = 11;
+          map = L.map("map", { minZoom: 1, maxZoom: 11 }).setView(
+            [43.869281, -103.5264874],
+            6
+          );
+
+          // Add layers to map
+          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+            map
+          );
+          overlay = L.tileLayer(
+            "https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png",
+            {
+              minZoom: mapMinZoom,
+              maxZoom: mapMaxZoom,
+              bounds: mapBounds,
+              opacity: 1,
+            }
+          ).addTo(map);
+
+          filterDataPoints(0); // Initialize with the first time range
+        } catch (error) {
+          console.error("Error during initialization:", error);
+        }
+      }
+
+      function filterDataPoints(selectedTime) {
+        console.log("Filtering data points for selected time:", selectedTime);
+        // Remove existing data points from the map
+        if (typeof window.dataLayer !== "undefined") {
+          map.removeLayer(window.dataLayer);
+        }
+
+        let filteredData = [];
+        data.forEach(dataset => {
+          filteredData = filteredData.concat(dataset.features.filter(function (feature) {
+            var startTime = parseInt(feature.properties.startTime, 10);
+            var endTime = parseInt(feature.properties.endTime, 10);
+            console.log(
+              "Feature:",
+              feature.properties,
+              "Start Time:",
+              startTime,
+              "End Time:",
+              endTime
+            );
+            return selectedTime >= startTime && selectedTime <= endTime;
+          }));
+        });
+
+        console.log("Filtered data:", filteredData);
+
+        // Add filtered data points to the map
+        window.dataLayer = L.geoJSON(filteredData).addTo(map);
+      }
+
+      // Initialize the map and data fetching
+      window.onload = init;
+    </script>
+  </body>
 </html>
