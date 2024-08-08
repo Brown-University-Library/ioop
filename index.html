@@ -175,8 +175,22 @@
 
         console.log("Filtered data:", filteredData);
 
-        // Add filtered data points to the map
-        window.dataLayer = L.geoJSON(filteredData).addTo(map);
+        // Add filtered data points to the map with popups
+        window.dataLayer = L.geoJSON(filteredData, {
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+              const name = feature.properties.name || 'No Name';
+              const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
+              console.log("Popup Content:", popupContent); // Log popup content
+              layer.on('mouseover', function (e) {
+                layer.bindPopup(popupContent).openPopup();
+              });
+              layer.on('mouseout', function (e) {
+                layer.closePopup();
+              });
+            }
+          }
+        }).addTo(map);
       }
 
       // Initialize the map and data fetching
