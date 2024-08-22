@@ -124,7 +124,7 @@ a.source:visited {
 }
 
 .out-focus {
-  opacity: 0.8;
+  opacity: 1.0;
 }
 
 .leaflet-control-attribution {
