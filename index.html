@@ -205,6 +205,9 @@
                 if (feature.properties) {
                     const name = feature.properties.name || 'No Name';
                     const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
+                    const popupOptions = {
+                      minWidth: 500px
+                    };
                     layer.bindPopup(popupContent);
             }
           }
