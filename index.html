@@ -103,6 +103,25 @@
       ];
       let data = [];
 
+    // Define custom icons
+      const iconMappings = {
+          'sacred': L.icon({
+              iconUrl: 'markers/sacredsites_blcross.png',
+              iconSize: [30, 30],
+              iconAnchor: [16, 32]
+          }),
+          'historic': L.icon({
+              iconUrl: 'markers/forts_icons.png',
+              iconSize: [30, 30],
+              iconAnchor: [16, 32]
+          }),
+          'city': L.icon({
+              iconUrl: 'markers/city_icons.png',
+              iconSize: [30, 30],
+              iconAnchor: [16, 32]
+          }),  
+        };
+
       async function init() {
         try {
           // Load geoJSON data from multiple local files
@@ -177,17 +196,16 @@
 
         // Add filtered data points to the map with popups
         window.dataLayer = L.geoJSON(filteredData, {
-          onEachFeature: function (feature, layer) {
-            if (feature.properties) {
-              const name = feature.properties.name || 'No Name';
-              const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
-              console.log("Popup Content:", popupContent); // Log popup content
-              layer.on('mouseover', function (e) {
-                layer.bindPopup(popupContent).openPopup();
-              });
-              layer.on('mouseout', function (e) {
-                layer.closePopup();
-              });
+            pointToLayer: function (feature, latlng) {
+                const site = feature.properties.site;
+                const icon = iconMappings[site] || L.icon({ iconUrl: 'path/to/defaultIcon.png', iconSize: [30, 30], iconAnchor: [16, 32] });  // Fallback to a default icon if no match
+                return L.marker(latlng, { icon: icon });
+            },
+            onEachFeature: function (feature, layer) {
+                if (feature.properties) {
+                    const name = feature.properties.name || 'No Name';
+                    const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
+                    layer.bindPopup(popupContent);
             }
           }
         }).addTo(map);
