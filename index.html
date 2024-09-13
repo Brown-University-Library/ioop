@@ -107,17 +107,17 @@
       const iconMappings = {
           'sacred': L.icon({
               iconUrl: 'markers/sacredsites_blcross.png',
-              iconSize: [30, 30],
+              iconSize: [32, 32],
               iconAnchor: [16, 32]
           }),
           'historic': L.icon({
               iconUrl: 'markers/forts_icons.png',
-              iconSize: [30, 30],
+              iconSize: [32, 32],
               iconAnchor: [16, 32]
           }),
           'city': L.icon({
               iconUrl: 'markers/city_icons.png',
-              iconSize: [30, 30],
+              iconSize: [32, 32],
               iconAnchor: [16, 32]
           }),  
         };
@@ -198,7 +198,7 @@
         window.dataLayer = L.geoJSON(filteredData, {
             pointToLayer: function (feature, latlng) {
                 const site = feature.properties.site;
-                const icon = iconMappings[site] || L.icon({ iconUrl: 'path/to/defaultIcon.png', iconSize: [30, 30], iconAnchor: [16, 32] });  // Fallback to a default icon if no match
+                const icon = iconMappings[site] || L.icon({ iconUrl: 'path/to/defaultIcon.png', iconSize: [32, 32], iconAnchor: [16, 32] });  // Fallback to a default icon if no match
                 return L.marker(latlng, { icon: icon });
             },
             onEachFeature: function (feature, layer) {
