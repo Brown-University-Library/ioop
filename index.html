@@ -203,14 +203,17 @@
             },
             onEachFeature: function (feature, layer) {
                 if (feature.properties) {
-                    const name = feature.properties.name || 'No Name';
-                    const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
-                    const popupOptions = {
-                      minWidth: 500,
-                    };
-                    layer.bindPopup(popupContent);
-            }
-          }
+                  const name = feature.properties.name || 'No Name';
+                  const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
+                  console.log("Popup Content:", popupContent); // Log popup content
+                  layer.on('mouseover', function (e) {
+                    layer.bindPopup(popupContent).openPopup();
+                  });
+                  layer.on('mouseout', function (e) {
+                layer.closePopup();
+                  });
+                }
+              }
         }).addTo(map);
       }
 
