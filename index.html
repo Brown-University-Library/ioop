@@ -32,6 +32,10 @@
 
     <!--Time Slider-->
         <script src="src/timeslider.js"></script>
+    
+    <!-- Leaflet Responsive Popup Plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-responsive-popup@1.0.0/leaflet.responsive.popup.css" />
+    <script src="https://unpkg.com/leaflet-responsive-popup@1.0.0/leaflet.responsive.popup.js"></script>
       
     </head>
     <body onload="init()">
@@ -202,18 +206,24 @@
                 return L.marker(latlng, { icon: icon });
             },
             onEachFeature: function (feature, layer) {
-                if (feature.properties) {
-                  const name = feature.properties.name || 'No Name';
-                  const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
-                  console.log("Popup Content:", popupContent); // Log popup content
-                  layer.on('mouseover', function (e) {
-                    layer.bindPopup(popupContent).openPopup();
-                  });
-                  layer.on('mouseout', function (e) {
-                layer.closePopup();
-                  });
+                 if (feature.properties) {
+                    const name = feature.properties.name || 'No Name';
+                    const popupContent = `<h3>${name}</h3><p>${feature.properties.popupContent || 'No Content'}</p>`;
+                    console.log("Popup Content:", popupContent); // Log popup content
+
+                    // Use L.responsivePopup for responsive popups
+                    const popup = L.responsivePopup()
+                        .setContent(popupContent);
+
+                    // Mouseover popup functionality with responsive popup
+                    layer.on('mouseover', function (e) {
+                        popup.setLatLng(e.latlng).openOn(map);
+                    });
+                    layer.on('mouseout', function (e) {
+                        map.closePopup(popup);
+                    });
                 }
-              }
+            }
         }).addTo(map);
       }
 
