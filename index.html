@@ -39,27 +39,6 @@
       
     </head>
     <body onload="init()">
-
-        <!--HEADER-->
-        <div class="header-main">
-            <div class="header-main-title">
-                <h1 class="header-main-title">In and Out of Place</h1>
-            </div>
-            <button class="button"><a href="#credit">Credit</a></button>
-            <button class="button"><a href="#credit">About</a></button>
-            <div class="dropdown timed" data-start-time="3" data-end-time="3" hidden>
-                <button class="dropbtn">
-                  Expeditions
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="https://brown-university-library.github.io/in-out-of-place-custer/" 
-                        target="_blank">
-                        Custer's Expedition, 1874
-                    </a>
-                </div>
-            </div>
-        </div> 
         
         <!--Basemap and slider-->    
         <div id="map">
@@ -71,6 +50,16 @@
                 value="1" 
                 oninput="overlay.setOpacity(this.value)"
             />
+            <div class="map-buttons">
+                <button class="button"><a href="#about">About</a></button>
+                <button class="button"><a href="#credit">Credit</a></button>
+                <div class="dropdown timed" data-start-time="3" data-end-time="3" hidden>
+                  <button class="dropbtn">Expeditions <i class="fa fa-caret-down"></i></button>
+                  <div class="dropdown-content">
+                    <a href="https://brown-university-library.github.io/in-out-of-place-custer/" target="_blank">Custer's Expedition, 1874</a>
+                  </div>
+                </div>
+            </div>    
         </div>
     
         <!--Time Slider-->   
