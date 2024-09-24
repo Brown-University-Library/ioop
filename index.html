@@ -212,6 +212,12 @@
                         map.closePopup(popup);
                     });
                 }
+            },
+            style: function (feature) {
+                return {
+                    fillColor: null,   // No fill color
+                    fillOpacity: 0     // Ensure no fill opacity
+                };
             }
         }).addTo(map);
       }
