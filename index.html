@@ -206,9 +206,6 @@
                     layer.on('mouseover', function (e) {
                         popup.setLatLng(e.latlng).openOn(map);
                     });
-                    layer.on('mouseout', function (e) {
-                        map.closePopup(popup);
-                    });
                 }
             },
             style: function (feature) {
