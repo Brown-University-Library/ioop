@@ -211,7 +211,9 @@
             style: function (feature) {
                 return {
                     fillColor: null,   // No fill color
-                    fillOpacity: 0     // Ensure no fill opacity
+                    fillOpacity: 0,     // Ensure no fill opacity
+                    color: #808080,    // Color of outline
+                    weight: 2        // Thickness of outline
                 };
             }
         }).addTo(map);
