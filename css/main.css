@@ -100,3 +100,7 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.leaflet-popup-content {
+min-width: 350px;
+}
