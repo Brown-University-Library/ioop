@@ -102,5 +102,7 @@
 }
 
 .leaflet-popup-content {
-min-width: 350px;
+max-width: 600px;
+max-height: 300px;
+overflow-y: auto;
 }
