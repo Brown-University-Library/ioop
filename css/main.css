@@ -103,5 +103,5 @@
 
 .leaflet-popup-content {
 font-size: 13;
-width: auto !important;
+maxWidth: auto !important;
 }
