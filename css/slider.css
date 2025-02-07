@@ -12,7 +12,7 @@
 }
 
 .range {
-  position: absolute;
+  position: relative;
   width: 545px;
   height: 5px;
   background: #636363;
@@ -92,8 +92,10 @@
 }
 
 .range-labels {
-  margin: 18px -41px 0;
+  display: flex; /*change to flex prevents wrapping, but loses container*/
+  margin: 13px -41px 0;
   padding: 0;
+  position: relative;
   list-style: none;
 }
 
