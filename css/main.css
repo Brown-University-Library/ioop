@@ -8,7 +8,7 @@
   z-index: 0;
 }
 
-#slider {
+#tile_slider {
   position: absolute;
   top: 20px;   /* Distance from the top */
   right: 20px; /* Distance from the right */
