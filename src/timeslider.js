@@ -97,3 +97,21 @@ document.addEventListener("DOMContentLoaded", function () {
     filterDataPoints(selectedTime);
   });
 });
+
+// Reset slider position to the first item on page refresh
+    slider.value = slider.min;
+    updateSlider();
+    
+    slider.addEventListener("input", function () {
+        updateSlider();
+    });
+
+    function updateSlider() {
+        const value = slider.value;
+        labels.forEach((label, index) => {
+            label.classList.remove("active", "selected");
+            if (index == value) {
+                label.classList.add("active", "selected");
+            }
+        });
+    }
