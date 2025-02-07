@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var rangeLabels = document.querySelectorAll(".range-labels li");
   var prefs = ["webkit-slider-runnable-track", "moz-range-track", "ms-track"];
 
+  // Store the initial value of the range input when the page loads
+  const initialTime = $rangeInput.value;
+
   var getTrackStyle = function (el) {
     var curVal = el.value;
     var val = (curVal - 0) * 16.666666667; // Updated to match the range of values (0-6)
@@ -84,34 +87,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize the style
   sheet.textContent = getTrackStyle($rangeInput);
+
+  // Reset timeline to initial settings when page is refreshed
+  $rangeInput.value = initialTime;
+  $rangeInput.dispatchEvent(new Event("input"));
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  var timeSlider = document.querySelector(".range input");
+  const timeSlider = document.querySelector(".range input");
   const timedElements = getTimestampedHtmlElements();
   console.log("TE", timedElements);
+
+  function resetTimeline() {
+    // Reset slider to initial value
+    timeSlider.value = timeSlider.defaultValue; // Ensures it goes to the first loaded state
+    timeSlider.dispatchEvent(new Event("input"));
+  }
+
+  // Reset timeline on page refresh
+  resetTimeline();
+
   timeSlider.addEventListener("input", function () {
-    var selectedTime = parseInt(this.value, 10);
+    const selectedTime = parseInt(this.value, 10);
     console.log("Selected time:", selectedTime);
     updateTimestampedHtmlElements(selectedTime, timedElements);
     filterDataPoints(selectedTime);
   });
 });
-
-// Reset slider position to the first item on page refresh
-    slider.value = slider.min;
-    updateSlider();
-    
-    slider.addEventListener("input", function () {
-        updateSlider();
-    });
-
-    function updateSlider() {
-        const value = slider.value;
-        labels.forEach((label, index) => {
-            label.classList.remove("active", "selected");
-            if (index == value) {
-                label.classList.add("active", "selected");
-            }
-        });
-    }
