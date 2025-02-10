@@ -40,16 +40,6 @@
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
 }
 
-.dropdown-content a {
-  font-size: 18px;
-  font-family: Georgia, serif;
-  color: #000000;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-
-}
-
 .button a {
   color: #000000;
   text-decoration: none;
@@ -59,46 +49,6 @@
   color: #000000;
   text-decoration: none;
   background-color: #f5ede6;
-}
-
-.dropbtn {
-  background-color: #D08C67;
-  color: #000000;
-  padding: 12px 20px;
-  font-size: 20px;
-  font-family: Georgia, serif;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-}
-
-.dropbtn:hover {
-  background-color: #f5ede6;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #f5ede6;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  font-size: 20px;
-  font-family: inherit;
-  color: #000000;
-  min-width: 205px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-  right: 0;
-}
-
-.dropdown-content:hover {
-  background-color: #f5ede6;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 
 .leaflet-popup-content {
