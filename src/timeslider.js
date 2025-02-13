@@ -114,3 +114,51 @@ document.addEventListener("DOMContentLoaded", function () {
     filterDataPoints(selectedTime);
   });
 });
+
+// Function for checking window size and update to vertical layout
+function adjustSliderLayout() {
+    const container = document.querySelector(".container");
+    const range = document.querySelector(".range input");
+    const labels = document.querySelectorAll(".range-labels li");
+
+    if (window.innerWidth < 720) {
+        container.classList.add("vertical");
+        range.style.writingMode = "vertical-lr"; 
+        range.style.transform = "rotate(180deg)"; // Ensure correct min-max orientation
+    } else {
+        container.classList.remove("vertical");
+        range.style.writingMode = "horizontal-tb";
+        range.style.transform = "none";
+    }
+}
+
+// Function to sync slider and labels
+function updateSlider(value) {
+    const labels = document.querySelectorAll(".range-labels li");
+
+    labels.forEach((label, index) => {
+        if (index == value) {
+            label.classList.add("active");
+        } else {
+            label.classList.remove("active");
+        }
+    });
+
+    filterDataPoints(value); // Ensure the timeline syncs with the slider value
+}
+
+// Add event listeners
+window.addEventListener("resize", adjustSliderLayout);
+window.addEventListener("load", adjustSliderLayout);
+
+document.querySelector(".range input").addEventListener("input", function () {
+    updateSlider(this.value);
+});
+
+// Allow clicking on labels to move slider
+document.querySelectorAll(".range-labels li").forEach((label, index) => {
+    label.addEventListener("click", function () {
+        document.querySelector(".range input").value = index;
+        updateSlider(index);
+    });
+});
