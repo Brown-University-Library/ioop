@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function adjustSliderLayout() {
     const range = document.querySelector(".range input");
 
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < 750) {
         range.style.writingMode = "vertical-lr"; 
         range.style.transform = "rotate(180deg)";
         range.style.background = "linear-gradient(to top, #636363, #37adbf)";
