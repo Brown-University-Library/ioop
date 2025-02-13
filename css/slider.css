@@ -127,7 +127,7 @@
   display: none;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 750px) {
   .container {
     display: flex;
     flex-direction: row; /* Ensure slider is next to labels */
