@@ -83,14 +83,6 @@
   outline: none;
 }
 
-.range input::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-
 .range-labels {
   display: flex; /*change to flex prevents wrapping, but loses container*/
   margin: 13px -41px 0;
@@ -116,8 +108,8 @@
   left: 0;
   content: "";
   margin: 0 auto;
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   background: #636363;
   border-radius: 50%;
 }
@@ -133,4 +125,102 @@
 
 .range-labels .active.selected::before {
   display: none;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    display: flex;
+    flex-direction: row; /* Ensure slider is next to labels */
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    height: 300px; /* Adjust height */
+    width: auto;
+    padding: 25px 10px 25px 25px;
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .range {
+    display: flex;
+    flex-direction: column-reverse; /* Invert direction so min is at the bottom */
+    align-items: center;
+    width: 5px; /* Narrow width for vertical slider */
+    height: 294px; /* Adjust height */
+    position: relative;
+    margin-right: 15px; /* Space between slider and labels */
+  }
+
+  .range input {
+    width: 3px; /* Match slider width */
+    height: 100%; /* Make it fully vertical */
+    writing-mode: vertical-lr; /* Force vertical direction */
+    transform: rotate(180deg); /* Ensure correct min-max order */
+    position: absolute;
+    left: -2px; /* Align properly with labels */
+    top: 0px;
+    -webkit-appearance: none;
+    background: #636363;
+  }
+
+  .range input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #37adbf;
+    cursor: pointer;
+    border: none;
+  }
+
+  .range input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #37adbf;
+    cursor: pointer;
+    border: none;
+  }
+
+  .range-labels {
+    display: flex;
+    flex-direction: column-reverse; /* Keep order correct */
+    align-items: flex-start;
+    height: 110%;
+    margin: 3px;
+    padding: 0;
+  }
+
+  .range-labels li {
+    width: 79px;
+    text-align: left;
+    padding: 13px 0px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .range-labels li::before {
+    left: -123px; /* Align dots with slider */
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    width: 11px;
+    height: 11px;
+    background: #636363;
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .range-labels .active {
+    color: #37adbf;
+    font-weight: bold;
+  }
+
+  .range-labels .selected::before {
+    background: #37adbf;
+  }
+
+  .range-labels .active.selected::before {
+    display: none;
+  }
 }
