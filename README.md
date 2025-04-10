@@ -1,9 +1,9 @@
 # The In and Out of Place project (with timeslider)
-Project link: https://brown-university-library.github.io/in-out-of-place/
+Project link: https://brown-university-library.github.io/ioop/
 The Leaflet uses a customizable timeline slider. The original template of timeline at https://codepen.io/trevanhetzel/pen/rOVrGK, with specific modifications and custom JS for this project.
 
 ### Requirements 
-- Leafelt 1.4.0
+- Leaflet 1.4.0
 - jQuery 3.3.1
 - Tested with Mozilla Firefox, Google Chrome, and Edge Chromium
 - Compatible with Mozilla Firefox, Google Chrome, and Edge Chromium
@@ -27,7 +27,8 @@ After loading leaflet css, leaflet js and jQuery in your HTML, include the downl
 This Leaflet StoryMap is created for the *In and Out of Place: Tracking Resources Extractions from Treaty Lands, 1874*, a digital project done in collaboration between [Center for American Indian Research and Native Studies](https://www.nativecairns.org/index.html) (CAIRNS) and [Brown University Library's Center for Digital Scholarship](https://library.brown.edu/create/cds/in-and-out-of-place-resource-extractions-from-treaty-lands). This StoryMap uses a template by *Hands-On Data Visualization* (see Credits), customized with our data and content on the 1874 expedition through the Black Hills. Our data sheet can be accessed below.
 
 ## Live links
-- Leaflet Map https://brown-university-library.github.io/in-out-of-place-custer/
+- Leaflet Map https://brown-university-library.github.io/ioop/
+- A Reconnaissance of the 1874 Black Hills Expedition https://brown-university-library.github.io/ioop/ioop-blackhills
 - Google Sheets template https://docs.google.com/spreadsheets/d/1kOxhcYI-CMPUxNq0wUFiAcHPT0u2gk3utx_8hALwAmg/edit#gid=1017616277
 
 ## Credits (and licenses)
