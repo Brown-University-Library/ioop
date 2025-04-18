@@ -28,7 +28,7 @@ This Leaflet StoryMap is created for the *In and Out of Place: Tracking Resource
 
 ## Live links
 - Leaflet Map https://brown-university-library.github.io/ioop/
-- A Reconnaissance of the 1874 Black Hills Expedition https://brown-university-library.github.io/ioop/ioop-blackhills
+- A Reconnaissance of the 1874 Black Hills Expedition https://brown-university-library.github.io/ioop/blackhills
 - Google Sheets template https://docs.google.com/spreadsheets/d/1kOxhcYI-CMPUxNq0wUFiAcHPT0u2gk3utx_8hALwAmg/edit#gid=1017616277
 
 ## Credits (and licenses)
